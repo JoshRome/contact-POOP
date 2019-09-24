@@ -1,10 +1,10 @@
 const router = require('express').Router();
-let contact = require('../models/contact.model');
+let contact = require('../../models/contact.model');
 
 router.route('/list').get((req, res) => {
-  contact.find()
-	// returns contacts in database
-    .then(contact => res.json(contact)) 
+  contact.find({owner: req.body.owner})
+	// returns contacts in database for users
+    .then(contact => res.json(contact))
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
@@ -12,7 +12,7 @@ router.route('/list').get((req, res) => {
 // creates new contact
 router.route('/add').post((req, res) => {
   // FIXME: do we need uname?? or just foreign key?
-  const username = req.body.username;
+  const owner = req.body.owner;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const phone = Number(req.body.phone) || null;
@@ -26,7 +26,7 @@ router.route('/add').post((req, res) => {
   assert(!(email == phone), "must have at least email or phone number");
 
   const newContact = new contact({
-    username,
+    owner,
     first_name,
     last_name,
     phone,

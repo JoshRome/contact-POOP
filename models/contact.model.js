@@ -5,7 +5,8 @@ const contactSchema = new Schema(
   {
     owner:
     {
-      type: mongoose.Schema.Types.ObjectId, ref: 'user.model'
+      type: String,
+      required: true
     },
     first_name:
     {
@@ -25,7 +26,7 @@ const contactSchema = new Schema(
         // required: true,
         // trim: true,
         // min : 100000000,
-        max : 999999999
+        max : 9999999999
         // write restrictions: for extensions
     },
     email:
