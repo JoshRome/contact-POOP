@@ -14,6 +14,8 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import contactList from "./components/contact-list";
+import CreateContact from "./components/create-contact";
+
 
 
 // Check for token to keep user logged in
@@ -46,8 +48,11 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/list" component={contactList} />
+          <Route exact path="/create" component={CreateContact} />
+
           <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              {/* <PrivateRoute exact path="/list" component={contactList} /> */}
             </Switch>
           {/* <Landing /> */}
         </div>

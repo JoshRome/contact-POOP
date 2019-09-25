@@ -21,9 +21,9 @@ router.route('/add').post((req, res) => {
   const birthday = Date.parse(req.body.birthday) || null;
   // TODO: const creationDate
 
-  // throws error if email and phone fields both empty
-  var assert = require('assert');
-  assert(!(email == phone), "must have at least email or phone number");
+  // // throws error if email and phone fields both empty
+  // var assert = require('assert');
+  // assert(!(email == phone), "must have at least email or phone number");
 
   const newContact = new contact({
     owner,
