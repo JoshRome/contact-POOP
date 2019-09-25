@@ -52,7 +52,10 @@ const contactSchema = new Schema(
     }
 
     // Creation date!!
-
+    createDate: {
+      type: Date,
+      default: Date.now
+    }
 
 });
 const contact = mongoose.model('contact', contactSchema);
