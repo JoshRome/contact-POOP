@@ -68,10 +68,13 @@ const contactSchema = new Schema(
     {
       type: Date
       // write restrictions:
-    }
+    },
 
     // Creation date!!
-
+    createDate: {
+      type: Date,
+      default: Date.now
+    }
 
 });
 const contact = mongoose.model('contact', contactSchema);
