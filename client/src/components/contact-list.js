@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
-
-export default class ContactList extends Component {
-  render() {
-    return (
-      <div>
-        <p>You are on the Contact List component!</p>
-      </div>
-    )
-  }
-}
-
+import axios from 'axios';
 
 // import React, { Component } from 'react';
 // import {Link} from 'react-router-dom';
-// import axios from 'axios';
 
 // const Contact = props => (
 //   <tr>
@@ -65,6 +54,19 @@ export default class ContactList extends Component {
 //       return <Contact contact={currentcontact} deleteContact={this.deleteContact} key={currentcontact._id}/>;
 //     })
 //   }
+
+export default class ContactList extends Component {
+  render() {
+    return (
+      <div>
+        <p>You are on the Contact List component!</p>
+      </div>
+    )
+  }
+}
+
+
+
 
 //   render() {
 //     return (
