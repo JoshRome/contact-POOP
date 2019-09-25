@@ -49,7 +49,7 @@ const contactSchema = new Schema(
     {
       type: Date
       // write restrictions:
-    }
+    },
 
     // Creation date!!
     createDate: {
