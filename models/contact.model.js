@@ -25,7 +25,7 @@ const contactSchema = new Schema(
         type: Number,
         // required: true,
         // trim: true,
-        // min : 100000000,
+        min : 100,
         max : 9999999999
         // write restrictions: for extensions
     },
@@ -37,7 +37,26 @@ const contactSchema = new Schema(
     },
     address:
     {
-        // write restrictions: for address.
+        street:
+        {
+            type: String,
+            trim: true
+        },
+        City:
+        {
+          type: String,
+          trim: true,
+        },
+        state:
+        {
+          type: String,
+          max: 2
+        },
+        zipcode:
+        {
+          type: Number,
+          max: 99999
+        }
     },
     nickname:
     {
