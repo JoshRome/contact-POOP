@@ -120,7 +120,7 @@ export default class CreateContact extends Component {
       .then(res => console.log(res.data));
 
     // goes back to contact list
-    window.location = '/';
+    window.location = '/list';
   }
 
 
