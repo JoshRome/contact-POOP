@@ -2,11 +2,34 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+
+import axios from 'axios';
+import {Link} from 'react-router-dom';
+
+const Contact = props => (
+  <tr>
+    {/* <td>{props.contact.username}</td> */}
+    <td>{props.contact.firstName}</td>
+    <td>{props.contact.lastName}</td>
+    <td>{props.contact.phone}</td>
+    <td>{props.contact.email}</td>
+    <td>{props.contact.nickname}</td>
+    <td>{props.contact.birthday}</td>
+    <td>{props.contact.date.substring(0,10)}</td>
+    <td>
+      // TODO: make button instead of link
+      <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a>
+    </td>
+  </tr>
+)
+
 class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
   };
+
+
 render() {
     const { user } = this.props.auth;
 return (
