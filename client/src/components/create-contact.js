@@ -7,7 +7,7 @@ export default class CreateContact extends Component {
     super(props);
 
     // defines "this"
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    // this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangefirstName = this.onChangefirstName.bind(this);
     this.onChangelastName = this.onChangelastName.bind(this);
     this.onChangephone = this.onChangephone.bind(this);
@@ -19,7 +19,7 @@ export default class CreateContact extends Component {
 
 
     this.state = {
-      username: '',
+      // username: '',
       firstName: '',
       lastName: '',
       phone: '',
@@ -52,11 +52,11 @@ export default class CreateContact extends Component {
   }
 
   //updates username element to whatever was in textbox 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    });
-  }
+  // onChangeUsername(e) {
+  //   this.setState({
+  //     username: e.target.value
+  //   });
+  // }
 
   onChangefirstName(e) {
     this.setState({
@@ -130,7 +130,7 @@ export default class CreateContact extends Component {
       <div>
         <h3>Create New Contact</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
+          {/* <div className="form-group"> 
             <label>Username: </label>
             <select ref="userInput"
                 required
@@ -148,7 +148,7 @@ export default class CreateContact extends Component {
                   })
                 }
             </select>
-            </div>
+            </div> */}
             <div className="form-group"> 
               <label>First Name: </label>
               <input  type="text"
