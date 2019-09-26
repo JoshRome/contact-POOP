@@ -28,34 +28,27 @@ export default class CreateContact extends Component {
       birthday: '',
       createDate: new Date(),
       // might not need
-      users: []
+      // users: []
     };
   }
 
   // FIXME: change drop down box design, dont want to be able
   // to switch between users.
   // automatically called before anything loaded on page
-  componentDidMount() {
-    axios.get('htto://localhost:5000/users/')
-      .then(response => {
-        // if at least one user in database
-        if (response.data.length > 0) {
-          this.setState({
-            // returns username from cell, 
-            // TODO: this is prob how to get contacts list to work
-            users: response.data.map(user => user.username),
-            // username defaults to first user in database
-            username: response.data[0].username
-          })
-        }
-      })
-  }
-
-  //updates username element to whatever was in textbox 
-  // onChangeUsername(e) {
-  //   this.setState({
-  //     username: e.target.value
-  //   });
+  // componentDidMount() {
+  //   axios.get('htto://localhost:5000/users/')
+  //     .then(response => {
+  //       // if at least one user in database
+  //       if (response.data.length > 0) {
+  //         this.setState({
+  //           // returns username from cell, 
+  //           // TODO: this is prob how to get contacts list to work
+  //           users: response.data.map(user => user.username),
+  //           // username defaults to first user in database
+  //           username: response.data[0].username
+  //         })
+  //       }
+  //     })
   // }
 
   onChangefirstName(e) {
@@ -120,7 +113,7 @@ export default class CreateContact extends Component {
       .then(res => console.log(res.data));
 
     // goes back to contact list
-    window.location = '/list';
+    window.location = '/dashboard';
   }
 
 

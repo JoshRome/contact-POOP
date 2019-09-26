@@ -1,7 +1,8 @@
 const router = require('express').Router();
 let contact = require('../../models/contact.model');
 
-router.route('/list').get((req, res) => {
+// changed from /list to /dashboard
+router.route('/dashboard').get((req, res) => {
   contact.find({owner: req.body.owner})
 	// returns contacts in database for users
     .then(contact => res.json(contact))
@@ -21,9 +22,7 @@ router.route('/add').post((req, res) => {
   const birthday = Date.parse(req.body.birthday) || null;
   // TODO: const creationDate
 
-  // // throws error if email and phone fields both empty
-  // var assert = require('assert');
-  // assert(!(email == phone), "must have at least email or phone number");
+
 
   const newContact = new contact({
     owner,

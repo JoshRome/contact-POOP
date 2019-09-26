@@ -50,7 +50,7 @@ export default class logIn extends Component {
       .then(res => console.log(res.data));
 
     // goes to contact list page (home page)
-    window.location = '/list';
+    window.location = '/dashboard';
   }
 
   render() {
