@@ -62,13 +62,13 @@ router.post("/register", (req, res) => {
    }
  const email = req.body.email;
    const password = req.body.password;
- // Find user by email
+   // Find user by email
    User.findOne({ email }).then(user => {
      // Check if user exists
      if (!user) {
        return res.status(404).json({ emailnotfound: "Email not found" });
      }
- // Check password
+     // Check password
      bcrypt.compare(password, user.password).then(isMatch => {
        if (isMatch) {
          // User matched
@@ -77,7 +77,7 @@ router.post("/register", (req, res) => {
            id: user.id,
            name: user.name
          };
- // Sign token
+         // Sign token
          jwt.sign(
            payload,
            keys.secretOrKey,

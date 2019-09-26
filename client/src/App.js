@@ -13,8 +13,9 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import contactList from "./components/contact-list";
 import CreateContact from "./components/create-contact";
+// moved list display to dashboard
+// import Contacts from './components/contacts';
 
 
 
@@ -38,8 +39,23 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+  state = {
+    contacts: []
+  }
+
+  componentDidMount() {
+    fetch('http://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then((data) => {
+      this.setState({ contacts: data })
+    })
+    .catch(console.log)
+  }
+
   render() {
     return (
+      
+      
       <Provider store={store}>
         <Router>
         <div className="App">
@@ -47,44 +63,23 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/list" component={contactList} />
+          {/* moved to list display to dashboard */}
+          {/* <Route exact path="/list" component={Contacts} /> */}
           <Route exact path="/create" component={CreateContact} />
+        
 
           <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              {/* <PrivateRoute exact path="/list" component={contactList} /> */}
             </Switch>
           {/* <Landing /> */}
         </div>
         </Router>
       </Provider>
 
+
+
     );
   }
 }
-
-// import Welcome from "./components/login";
-// import ContactList from "./components/contact-list";
-// import EditContact from "./components/edit-contact";
-// import CreateContact from "./components/create-contact";
-// import CreateUser from "./components/create-user";
-
-
-
-// function App() {
-//   return (
-//     <Router>
-//       <div className="container">
-//         <Navbar />
-//         <br/>
-//         <Route path="/" exact component={Welcome} />
-//         <Route path="/list" exact component={ContactList} />
-//         <Route path="/edit/:id" component={EditContact} />
-//         <Route path="/create" component={CreateContact} />
-//         <Route path="/user" component={CreateUser} />
-//       </div>
-//     </Router>
-//   );
-// }
 
 export default App;
