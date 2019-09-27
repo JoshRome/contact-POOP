@@ -81,9 +81,9 @@ class Dashboard extends Component {
 render() {
     const { user } = this.props.auth;
 return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper">
+      <div style={{ height: "75vh" }} className="container valign-wrapper float: left width:10% pull s-9">
         <div className="row">
-          <div className="col s6 pull-s7 center-align">
+          <div className="col s1 center-align">
             <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
@@ -92,7 +92,7 @@ return (
               </p>
             </h4>
             <div>
-              <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">create</i></a>
+              <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             </div>
             <button
               style={{
@@ -133,7 +133,7 @@ return (
 
             
 
-        <div className="col s6 push-s5  center-align">
+        <div className="col s6 push-s7  center-align">
         <table class="responsive-table">
         <thead>
           <tr>
