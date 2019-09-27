@@ -6,7 +6,7 @@ const contactSchema = new Schema(
     owner:
     {
       type: String,
-      required: true
+      // required: true
     },
     first_name:
     {

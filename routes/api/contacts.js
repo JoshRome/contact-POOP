@@ -2,7 +2,7 @@ const router = require('express').Router();
 let contact = require('../../models/contact.model');
 
 // changed from /list to /dashboard
-router.route('/dashboard').post((req, res) => {
+router.route('/dashboard').posthen((req, res) => {
   contact.find({owner: req.body.owner})
 	// returns contacts in database for users
     .then(contact => res.json(contact))
@@ -20,7 +20,7 @@ router.route('/add').post((req, res) => {
   const email = req.body.email;
   const nickname = req.body.nickname;
   const birthday = Date.parse(req.body.birthday) || null;
-  // TODO: const creationDate
+  const createDate = Date.parse(req.body.createDate);
 
 
 
@@ -31,8 +31,8 @@ router.route('/add').post((req, res) => {
     phone,
     email,
     nickname,
-    birthday
-    // creationDate
+    birthday,
+    createDate
   });
 
   //FIXME: dont show if null
