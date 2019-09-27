@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -7,7 +6,7 @@ export default class EditContact extends Component {
     super(props);
 
     // defines "this"
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    // this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangefirst_name = this.onChangefirst_name.bind(this);
     this.onChangelast_name = this.onChangelast_name.bind(this);
     this.onChangephone = this.onChangephone.bind(this);
@@ -17,9 +16,10 @@ export default class EditContact extends Component {
     // this.onChangecreateDate = this.onChangecreateDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
+    const { user } = this.props.auth;
 
     this.state = {
-      username: '',
+      owner: '',
       first_name: '',
       last_name: '',
       phone: '',
@@ -39,7 +39,7 @@ export default class EditContact extends Component {
     axios.get('http://localhost:5000/contacts/'+this.props.match.params.id)
       .then(response => {
         this.setState({
-          username: response.data.username,
+          // owner: user.email,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           phone: response.data.phone,

@@ -12,7 +12,6 @@ router.route('/dashboard').posthen((req, res) => {
 
 // creates new contact
 router.route('/add').post((req, res) => {
-  // FIXME: do we need uname?? or just foreign key?
   const owner = req.body.owner;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
@@ -65,7 +64,7 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
   contact.findById(req.params.id)
     .then(contact => {
-      contact.username = req.body.username;
+      contact.owner = req.body.owner;
       contact.first_name = req.body.first_name;
       contact.last_name = req.body.last_name;
       //TODO: assert here?? maybe??

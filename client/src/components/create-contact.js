@@ -19,13 +19,13 @@ export default class CreateContact extends Component {
 
 
     this.state = {
-      // username: '',
+      owner: '',
       first_name: '',
       last_name: '',
       phone: '',
       email: '',
       nickname: '',
-      birthday: '',
+      birthday: new Date(),
       createDate: new Date()
       // might not need
       // users: []

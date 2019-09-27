@@ -34,15 +34,16 @@ class Dashboard extends Component {
 
     // this.deleteContact = this.deleteContact.bind(this);
     this.state = {contacts: []};
+    // const email = this.state.owner;
 
   }
 
   // state = {contacts: []}
 
   componentDidMount() {
-    const email = 'test@test.test';
-    const owner = { owner : email }
-
+    // const email = 'test@test.test';
+    // const owner = { owner : email }
+        const owner = this.props.email;
         axios.post('/api/contacts/dashboard', owner)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
