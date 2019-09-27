@@ -109,7 +109,7 @@ export default class CreateContact extends Component {
     console.log(contact);
 
     // adds contact to database
-    axios.post('http://localhost:5000/contacts/add', contact)
+    axios.post('api/contacts/add', contact)
       .then(res => console.log(res.data));
 
     // goes back to contact list

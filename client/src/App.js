@@ -14,6 +14,10 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreateContact from "./components/create-contact";
+import NewTable from "./components/table";
+import EditContact from "./components/edit-contact";
+
+
 // moved list display to dashboard
 // import Contacts from './components/contacts';
 
@@ -63,6 +67,10 @@ class App extends Component {
           <Route exact path="/" component={Landing} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/table" component={NewTable} />
+          <Route exact path="/edit" component={EditContact} />
+
+
           {/* moved to list display to dashboard */}
           {/* <Route exact path="/list" component={Contacts} /> */}
           <Route exact path="/create" component={CreateContact} />

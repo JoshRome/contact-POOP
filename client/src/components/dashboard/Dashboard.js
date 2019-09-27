@@ -6,19 +6,19 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
-const Contact = props => (
+const Contacts = props => (
   <tr>
-    <td>{props.contact.username}</td>
-    <td>{props.contact.firstName}</td>
-    <td>{props.contact.lastName}</td>
-    <td>{props.contact.phone}</td>
-    <td>{props.contact.email}</td>
-    <td>{props.contact.nickname}</td>
-    <td>{props.contact.birthday}</td>
-    <td>{props.contact.date.substring(0,10)}</td>
+    {/* <td>{props.contact.username}</td> */}
+    <td>{props.contacts.first_name}</td>
+    <td>{props.contacts.last_name}</td>
+    <td>{props.contacts.phone}</td>
+    <td>{props.contacts.email}</td>
+    <td>{props.contacts.nickname}</td>
+    <td>{props.contacts.birthday}</td>
+    {/* <td>{props.contacts.creationDate.substring(0,10)}</td> */}
     <td>
       {/* TODO: make button instead of link */}
-      <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a>
+      {/* <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a> */}
     </td>
   </tr>
 )
@@ -32,43 +32,56 @@ class Dashboard extends Component {
     constructor(props) {
     super(props);
 
-    this.deleteContact = this.deleteContact.bind(this);
+    // this.deleteContact = this.deleteContact.bind(this);
     this.state = {contacts: []};
+
   }
 
   // state = {contacts: []}
 
   componentDidMount() {
-        axios.get('http://localhost:5000/contacts')
+    const owner = { owner :'test@test.test' }
+
+        axios.post('/api/contacts/dashboard', owner)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
-            this.setState({ contact: response.data });
+            this.setState({ contacts: response.data });
           })
           .catch((error) => {
             console.log(error);
           })
       }
+
+      // axios.post('http://localhost:5000/', user)
+      // .then(res => console.log(res.data));
     
-      deleteContact(id) {
-        axios.delete('http://localhost:5000/contacts/'+id)
-          .then(res => console.log(res.data));
-        this.setState({
-          // returns all the id's that don't match the deleted id
-          contacts: this.state.contacts.filter(el => el._id !== id)
-        })
-      }
+      // deleteContact(id) {
+      //   axios.delete('http://localhost:5000/api/contacts/dashboard'+id)
+      //     .then(res => console.log(res.data));
+      //   this.setState({
+      //     // returns all the id's that don't match the deleted id
+      //     contacts: this.state.contacts.filter(el => el._id !== id)
+      //   })
+      // }
     
-      contactList() {
-        return this.state.contacts.map(currentcontact => {
-          return <Contact contact={currentcontact} deleteContact={this.deleteContact} key={currentcontact._id}/>;
-        })
-      }
+      // contactList() {
+      //   return this.state.contacts.map(currentcontact => {
+      //     return <Contacts contacts={currentContact} key={i} />;
+
+      //     // return <Contact contact={currentcontact} deleteContact={this.deleteContact} key={currentcontact._id}/>;
+      //   })
+      // }
         
+      ContactList() {
+        return this.state.contacts.map(function(currentContact, i){
+            return <Contacts contacts={currentContact} key={i} />;
+        })
+    }
 
 render() {
     const { user } = this.props.auth;
 return (
-      <div style={{ height: "25vh" }} className="container valign-wrapper">
+      <div style={{ height: "75vh" }} className="container valign-wrapper">
         <div className="row">
           <div className="col s6 pull-s7 center-align">
             <h4>
@@ -136,7 +149,7 @@ return (
 
         <tbody>
         {/* table should generate here, but contacts not added to db so can't test */}
-         { this.contactList() }
+         { this.ContactList() }
         </tbody>
       </table>
         </div>
