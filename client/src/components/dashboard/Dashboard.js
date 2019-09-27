@@ -15,7 +15,7 @@ const Contacts = props => (
     <td>{props.contacts.email}</td>
     <td>{props.contacts.nickname}</td>
     <td>{props.contacts.birthday}</td>
-    {/* <td>{props.contacts.creationDate.substring(0,10)}</td> */}
+    <td>{props.contacts.createDate.substring(0,10)}</td>
     <td>
       {/* TODO: make button instead of link */}
       {/* <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a> */}
@@ -40,7 +40,8 @@ class Dashboard extends Component {
   // state = {contacts: []}
 
   componentDidMount() {
-    const owner = { owner :'test@test.test' }
+    const email = 'test@test.test';
+    const owner = { owner : email }
 
         axios.post('/api/contacts/dashboard', owner)
           .then(response => {
