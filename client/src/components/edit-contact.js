@@ -40,7 +40,7 @@ export default class EditContact extends Component {
       .then(response => {
         this.setState({
           username: response.data.username,
-          firstName: response.data.firstName,
+          first_name: response.data.first_name,
           last_name: response.data.last_name,
           phone: response.data.phone,
           email: response.data.email,
