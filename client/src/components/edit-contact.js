@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import axios from 'axios';
 
@@ -7,28 +6,29 @@ export default class EditContact extends Component {
     super(props);
 
     // defines "this"
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangefirstName = this.onChangefirstName.bind(this);
-    this.onChangelastName = this.onChangelastName.bind(this);
+    // this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangefirst_name = this.onChangefirst_name.bind(this);
+    this.onChangelast_name = this.onChangelast_name.bind(this);
     this.onChangephone = this.onChangephone.bind(this);
     this.onChangeemail = this.onChangeemail.bind(this);
     this.onChangenickname = this.onChangenickname.bind(this);
     this.onChangebirthday = this.onChangebirthday.bind(this);
-    this.onChangecreateDate = this.onChangecreateDate.bind(this);
+    // this.onChangecreateDate = this.onChangecreateDate.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
+    const { user } = this.props.auth;
 
     this.state = {
-      username: '',
-      firstName: '',
-      lastName: '',
+      owner: '',
+      first_name: '',
+      last_name: '',
       phone: '',
       email: '',
       nickname: '',
       birthday: '',
-      createDate: new Date(),
+      // createDate: new Date(),
       // might not need
-      users: []
+      // users: []
     };
   }
 
@@ -39,14 +39,14 @@ export default class EditContact extends Component {
     axios.get('http://localhost:5000/contacts/'+this.props.match.params.id)
       .then(response => {
         this.setState({
-          username: response.data.username,
-          firstName: response.data.firstName,
-          lastName: response.data.lastName,
+          // owner: user.email,
+          first_name: response.data.first_name,
+          last_name: response.data.last_name,
           phone: response.data.phone,
           email: response.data.email,
           nickname: response.data.nickname,
           birthday: response.data.birthday,
-          dateCreated: new Date(response.data.date)
+          // dateCreated: new Date(response.data.date)
         })   
       })
       .catch(function (error) {
@@ -69,21 +69,21 @@ export default class EditContact extends Component {
   }
 
   //updates username element to whatever was in textbox 
-  onChangeUsername(e) {
+  // onChangeUsername(e) {
+  //   this.setState({
+  //     username: e.target.value
+  //   });
+  // }
+
+  onChangefirst_name(e) {
     this.setState({
-      username: e.target.value
+      first_name: e.target.value
     });
   }
 
-  onChangefirstName(e) {
+  onChangelast_name(e) {
     this.setState({
-      firstName: e.target.value
-    });
-  }
-
-  onChangelastName(e) {
-    this.setState({
-      lastName: e.target.value
+      last_name: e.target.value
     });
   }
 
@@ -111,24 +111,24 @@ export default class EditContact extends Component {
     });
   }
 
-  onChangecreateDate(date) {
-    this.setState({
-      date: date
-    });
-  }
+  // onChangecreateDate(date) {
+  //   this.setState({
+  //     date: date
+  //   });
+  // }
 
   onSubmit(e) {
     e.preventDefault();
     
     const contact = {
-      username: this.state.username,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      // username: this.state.username,
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
       phone: this.state.phone,
       email: this.state.email,
       nickname: this.state.nickname,
       birthday: this.state.birthday,
-      createDate: this.state.date
+      // createDate: this.state.date
     };
     console.log(contact);
 
@@ -147,7 +147,7 @@ export default class EditContact extends Component {
       <div>
         <h3>Edit Contact</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group"> 
+          {/* <div className="form-group"> 
             <label>Username: </label>
             <select ref="userInput"
                 required
@@ -165,14 +165,14 @@ export default class EditContact extends Component {
                   })
                 }
             </select>
-            </div>
+            </div> */}
             <div className="form-group"> 
               <label>First Name: </label>
               <input  type="text"
                   required
                   className="form-control"
-                  value={this.state.firstName}
-                  onChange={this.onChangefirstName}
+                  value={this.state.first_name}
+                  onChange={this.onChangefirst_name}
                   />
             </div>
             <div className="form-group">
@@ -180,8 +180,8 @@ export default class EditContact extends Component {
               <input 
                   type="text" 
                   className="form-control"
-                  value={this.state.lastName}
-                  onChange={this.onChangelastName}
+                  value={this.state.last_name}
+                  onChange={this.onChangelast_name}
                   />
             </div>
 
@@ -225,7 +225,7 @@ export default class EditContact extends Component {
                   />
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>Date Created: </label>
               <input 
                   type="text" 
@@ -233,7 +233,7 @@ export default class EditContact extends Component {
                   value={this.state.createDate}
                   onChange={this.onChangecreateDate}
                   />
-            </div>
+            </div> */}
 
           <div className="form-group">
             <input type="submit" value="Edit Contact" className="btn btn-primary" />

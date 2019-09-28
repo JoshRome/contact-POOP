@@ -6,7 +6,7 @@ const contactSchema = new Schema(
     owner:
     {
       type: String,
-      required: true
+      // required: true
     },
     first_name:
     {
@@ -66,7 +66,7 @@ const contactSchema = new Schema(
     },
     birthday:
     {
-      type: Date
+      type: String
       // write restrictions:
     },
 

@@ -8,8 +8,8 @@ export default class CreateContact extends Component {
 
     // defines "this"
     // this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangefirstName = this.onChangefirstName.bind(this);
-    this.onChangelastName = this.onChangelastName.bind(this);
+    this.onChangefirst_name = this.onChangefirst_name.bind(this);
+    this.onChangelast_name = this.onChangelast_name.bind(this);
     this.onChangephone = this.onChangephone.bind(this);
     this.onChangeemail = this.onChangeemail.bind(this);
     this.onChangenickname = this.onChangenickname.bind(this);
@@ -19,14 +19,14 @@ export default class CreateContact extends Component {
 
 
     this.state = {
-      // username: '',
-      firstName: '',
-      lastName: '',
+      owner: '',
+      first_name: '',
+      last_name: '',
       phone: '',
       email: '',
       nickname: '',
       birthday: '',
-      createDate: new Date(),
+      createDate: new Date()
       // might not need
       // users: []
     };
@@ -51,15 +51,15 @@ export default class CreateContact extends Component {
   //     })
   // }
 
-  onChangefirstName(e) {
+  onChangefirst_name(e) {
     this.setState({
-      firstName: e.target.value
+      first_name: e.target.value
     });
   }
 
-  onChangelastName(e) {
+  onChangelast_name(e) {
     this.setState({
-      lastName: e.target.value
+      last_name: e.target.value
     });
   }
 
@@ -97,9 +97,9 @@ export default class CreateContact extends Component {
     e.preventDefault();
     
     const contact = {
-      username: this.state.username,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+      owner: 'help@help.zzz',
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
       phone: this.state.phone,
       email: this.state.email,
       nickname: this.state.nickname,
@@ -109,7 +109,7 @@ export default class CreateContact extends Component {
     console.log(contact);
 
     // adds contact to database
-    axios.post('http://localhost:5000/contacts/add', contact)
+    axios.post('/api/contacts/add', contact)
       .then(res => console.log(res.data));
 
     // goes back to contact list
@@ -147,8 +147,8 @@ export default class CreateContact extends Component {
               <input  type="text"
                   required
                   className="form-control"
-                  value={this.state.firstName}
-                  onChange={this.onChangefirstName}
+                  value={this.state.first_name}
+                  onChange={this.onChangefirst_name}
                   />
             </div>
             <div className="form-group">
@@ -156,8 +156,8 @@ export default class CreateContact extends Component {
               <input 
                   type="text" 
                   className="form-control"
-                  value={this.state.lastName}
-                  onChange={this.onChangelastName}
+                  value={this.state.last_name}
+                  onChange={this.onChangelast_name}
                   />
             </div>
 

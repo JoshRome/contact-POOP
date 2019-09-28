@@ -2,7 +2,7 @@ const router = require('express').Router();
 let contact = require('../../models/contact.model');
 
 // changed from /list to /dashboard
-router.route('/dashboard').get((req, res) => {
+router.route('/dashboard').post((req, res) => {
   contact.find({owner: req.body.owner})
 	// returns contacts in database for users
     .then(contact => res.json(contact))
@@ -12,15 +12,14 @@ router.route('/dashboard').get((req, res) => {
 
 // creates new contact
 router.route('/add').post((req, res) => {
-  // FIXME: do we need uname?? or just foreign key?
   const owner = req.body.owner;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const phone = Number(req.body.phone) || null;
   const email = req.body.email;
   const nickname = req.body.nickname;
-  const birthday = Date.parse(req.body.birthday) || null;
-  // TODO: const creationDate
+  const birthday = req.body.birthday;
+  const createDate = Date.parse(req.body.createDate);
 
 
 
@@ -31,8 +30,8 @@ router.route('/add').post((req, res) => {
     phone,
     email,
     nickname,
-    birthday
-    // creationDate
+    birthday,
+    createDate
   });
 
   //FIXME: dont show if null
@@ -65,14 +64,14 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
   contact.findById(req.params.id)
     .then(contact => {
-      contact.username = req.body.username;
+      contact.owner = req.body.owner;
       contact.first_name = req.body.first_name;
       contact.last_name = req.body.last_name;
       //TODO: assert here?? maybe??
       contact.phone = Number(req.body.phone) || null;
       contact.email = req.body.email;
       contact.nickname = req.body.nickname;
-      contact.birthday = Date.parse(req.body.date) || null;
+      contact.birthday = req.body.date || null;
 
       contact.save()
         .then(() => res.json('Contact updated!'))
