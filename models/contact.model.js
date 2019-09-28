@@ -5,7 +5,8 @@ const contactSchema = new Schema(
   {
     owner:
     {
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'user'
       // required: true
     },
     first_name:

@@ -42,12 +42,12 @@ class Dashboard extends Component {
 
   componentDidMount() {
     // const {email} = this.props.auth;
-
+    const {user } = this.props.auth;
     const email = 'help@help.zzz';
-    console.log(email);
+    console.log(user);
 
     const owner = { owner : email }
-        axios.post('/api/contacts/dashboard/', owner)
+        axios.post('/api/contacts/dashboard/', user)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
             this.setState({ contacts: response.data });
@@ -59,7 +59,7 @@ class Dashboard extends Component {
 
       // axios.post('http://localhost:5000/', user)
       // .then(res => console.log(res.data));
-    
+
       // deleteContact(id) {
       //   axios.delete('http://localhost:5000/api/contacts/dashboard'+id)
       //     .then(res => console.log(res.data));
@@ -68,7 +68,7 @@ class Dashboard extends Component {
       //     contacts: this.state.contacts.filter(el => el._id !== id)
       //   })
       // }
-    
+
       // contactList() {
       //   return this.state.contacts.map(currentcontact => {
       //     return <Contacts contacts={currentContact} key={i} />;
@@ -76,22 +76,23 @@ class Dashboard extends Component {
       //     // return <Contact contact={currentcontact} deleteContact={this.deleteContact} key={currentcontact._id}/>;
       //   })
       // }
-        
+
       ContactList() {
         return this.state.contacts.map(function(currentContact, i){
             return <Contacts contacts={currentContact} key={i} />;
         })
     }
 
-    
+
 
 render() {
     const { user } = this.props.auth;
+    console.log(user);
 return (
       <div style={{ height: "50vh" }} className="container valign-wrapper float: left width:10%">
         {/* <div className="row">
           <div className="col s1 center-align">
-           
+
           </div>
         </div> */}
 

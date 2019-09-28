@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropTypes from "prop-types";
+
 const Contacts = props => (
     <tr>
     <td>{props.contacts.first_name}</td>
@@ -21,9 +23,9 @@ export default class ContactList extends Component {
         this.state = {contacts: []};
     }
     componentDidMount() {
-		const owner = { owner :'antoinedga' }
-
-        axios.post('/api/contacts/dashboard', owner)
+		const {owner} = this.props.auth;
+    console.log(owner);
+        axios.post('/api/contacts/dashboard')
             .then(response => {
 					console.log(response)
                 this.setState({ contacts: response.data });
