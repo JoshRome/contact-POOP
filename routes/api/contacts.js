@@ -2,7 +2,7 @@ const router = require('express').Router();
 let contact = require('../../models/contact.model');
 
 // changed from /list to /dashboard
-router.route('/dashboard').posthen((req, res) => {
+router.route('/dashboard').post((req, res) => {
   contact.find({owner: req.body.owner})
 	// returns contacts in database for users
     .then(contact => res.json(contact))

@@ -57,10 +57,14 @@ nav {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  background: rgb(139, 53, 53);
+  background: #FFF;
   padding: 20px;
 }
-
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 /* Style the list inside the menu */
 nav ul {
   list-style-type: none;
