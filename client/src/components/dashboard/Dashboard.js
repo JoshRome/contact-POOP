@@ -88,24 +88,24 @@ class Dashboard extends Component {
 render() {
     const { user } = this.props.auth;
 return (
-      <div style={{ height: "50vh" }} className="container valign-wrapper float: left width:10%">
+      <div>
         {/* <div className="row">
           <div className="col s1 center-align">
            
           </div>
         </div> */}
 
-        <nav>
+        <div class="column side">
         <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
                 You are logged into your{" "}
-                <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app 👏
+                <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app 👏 
               </p>
             </h4>
-            <div>
-              <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-            </div>
+            
+
+            <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             <button
               style={{
                 width: "150px",
@@ -118,7 +118,7 @@ return (
             >
               Logout
             </button>
-  </nav>
+  </div>
       {/* formatting stuff: testing card layout, look at if time */}
         {/* <div class="row">
     <div class="col s12 m6">
@@ -141,7 +141,7 @@ return (
     </div>
   </div> */}
 
-      <article>
+      <div class="column middle">
         <table class="responsive-table">
         <thead>
           <tr>
@@ -160,7 +160,7 @@ return (
          { this.ContactList() }
         </tbody>
       </table>
-        </article>
+        </div>
       </div>
     );
   }
