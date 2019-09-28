@@ -83,13 +83,20 @@ class Dashboard extends Component {
         })
     }
 
+    
+
 render() {
     const { user } = this.props.auth;
 return (
       <div style={{ height: "50vh" }} className="container valign-wrapper float: left width:10%">
-        <div className="row">
+        {/* <div className="row">
           <div className="col s1 center-align">
-            <h4>
+           
+          </div>
+        </div> */}
+
+        <nav>
+        <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
                 You are logged into your{" "}
@@ -111,9 +118,7 @@ return (
             >
               Logout
             </button>
-          </div>
-        </div>
-
+  </nav>
       {/* formatting stuff: testing card layout, look at if time */}
         {/* <div class="row">
     <div class="col s12 m6">
@@ -136,9 +141,7 @@ return (
     </div>
   </div> */}
 
-            
-
-        <div className="col s5  center-align">
+      <article>
         <table class="responsive-table">
         <thead>
           <tr>
@@ -157,7 +160,7 @@ return (
          { this.ContactList() }
         </tbody>
       </table>
-        </div>
+        </article>
       </div>
     );
   }

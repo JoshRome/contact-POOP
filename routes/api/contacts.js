@@ -18,7 +18,7 @@ router.route('/add').post((req, res) => {
   const phone = Number(req.body.phone) || null;
   const email = req.body.email;
   const nickname = req.body.nickname;
-  const birthday = Date.parse(req.body.birthday) || null;
+  const birthday = req.body.birthday;
   const createDate = Date.parse(req.body.createDate);
 
 
@@ -71,7 +71,7 @@ router.route('/update/:id').post((req, res) => {
       contact.phone = Number(req.body.phone) || null;
       contact.email = req.body.email;
       contact.nickname = req.body.nickname;
-      contact.birthday = Date.parse(req.body.date) || null;
+      contact.birthday = req.body.date || null;
 
       contact.save()
         .then(() => res.json('Contact updated!'))

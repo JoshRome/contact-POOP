@@ -25,7 +25,7 @@ export default class CreateContact extends Component {
       phone: '',
       email: '',
       nickname: '',
-      birthday: new Date(),
+      birthday: '',
       createDate: new Date()
       // might not need
       // users: []
@@ -97,7 +97,7 @@ export default class CreateContact extends Component {
     e.preventDefault();
     
     const contact = {
-      owner: 'test@test.test',
+      owner: 'help@help.zzz',
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       phone: this.state.phone,

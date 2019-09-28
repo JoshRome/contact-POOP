@@ -47,7 +47,7 @@ const contactSchema = new Schema(
     },
     birthday:
     {
-      type: Date
+      type: String
       // write restrictions:
     },
 
