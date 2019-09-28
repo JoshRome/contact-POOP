@@ -41,10 +41,13 @@ class Dashboard extends Component {
   // state = {contacts: []}
 
   componentDidMount() {
-    // const email = 'test@test.test';
-    // const owner = { owner : email }
-        const owner = this.props.email;
-        axios.post('/api/contacts/dashboard', owner)
+    // const {email} = this.props.auth;
+
+    const email = 'help@help.zzz';
+    console.log(email);
+
+    const owner = { owner : email }
+        axios.post('/api/contacts/dashboard/', owner)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
             this.setState({ contacts: response.data });
@@ -83,7 +86,7 @@ class Dashboard extends Component {
 render() {
     const { user } = this.props.auth;
 return (
-      <div style={{ height: "75vh" }} className="container valign-wrapper float: left width:10% pull s-9">
+      <div style={{ height: "50vh" }} className="container valign-wrapper float: left width:10%">
         <div className="row">
           <div className="col s1 center-align">
             <h4>
@@ -135,7 +138,7 @@ return (
 
             
 
-        <div className="col s6 push-s7  center-align">
+        <div className="col s5  center-align">
         <table class="responsive-table">
         <thead>
           <tr>
