@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Paper from '@material-ui/core/Paper';
-import color from '@material-ui/core/colors/lime';
+
 
 
 export default class EditContact extends Component {
@@ -173,7 +172,7 @@ export default class EditContact extends Component {
             <div className="form-group">
               <label>Birthday: </label>
               <input 
-                  type="text" 
+                  type="date" 
                   className="form-control"
                   value={this.state.birthday}
                   onChange={this.onChangebirthday}

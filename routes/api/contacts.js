@@ -61,15 +61,15 @@ router.route('/:id').delete((req, res) => {
 });
 
 // updates contact
-router.route('/update/:id').post((req, res) => {
-  contact.findById(req.params.id)
+router.route('/update/:id').put((req, res) => {
+  contact.find(req.params.id)
     .then(contact => {
       contact.first_name = req.body.first_name;
       contact.last_name = req.body.last_name;
       contact.phone = Number(req.body.phone) || null;
       contact.email = req.body.email;
       contact.nickname = req.body.nickname;
-      contact.birthday = req.body.date || null;
+      contact.birthday = req.body.birthday;
 
       contact.save()
         .then(() => res.json('Contact updated!'))
