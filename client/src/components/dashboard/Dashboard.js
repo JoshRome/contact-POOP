@@ -18,8 +18,7 @@ const Contacts = props => (
     <td>{props.contacts.createDate.substring(0,10)}</td>
     <td>
       {/* TODO: make button instead of link */}
-      {/* {/* <Link to={"/edit/"+props.contact._id}>edit</Link> |  */}
-    <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>Delete</a> | 
+      {/* {/* <Link to={"/edit/"+props.contact._id}>edit</Link> |  */} 
       <Link to={"edit/"+props.contacts._id}> Edit</Link>
     </td>
   </tr>
@@ -35,7 +34,7 @@ class Dashboard extends Component {
     constructor(props) {
     super(props);
 
-    this.deleteContact = this.deleteContact.bind(this);
+    // this.deleteContact = this.deleteContact.bind(this);
     this.state = {contacts: []};
     // const email = this.state.owner;
 
@@ -61,14 +60,14 @@ class Dashboard extends Component {
       // axios.post('http://localhost:5000/', user)
       // .then(res => console.log(res.data));
 
-      deleteContact(id) {
-        axios.delete('/api/contacts/'+id)
-          .then(res => console.log(res.data));
-        this.setState({
-          // returns all the id's that don't match the deleted id
-          contacts: this.state.contacts.filter(el => el._id !== id)
-        })
-      }
+      // deleteContact(id) {
+      //   axios.delete('/api/contacts/'+id)
+      //     .then(res => console.log(res.data));
+      //   this.setState({
+      //     // returns all the id's that don't match the deleted id
+      //     contacts: this.state.contacts.filter(el => el._id !== id)
+      //   })
+      // }
 
       // contactList() {
       //   return this.state.contacts.map(currentcontact => {

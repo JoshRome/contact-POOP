@@ -7,11 +7,14 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../actions/authActions";
 
+
 export default class CreateContact extends Component {
   constructor(props) {
     super(props);
-    var id = '5d8e9102bfb9b671d5868a5e';
-    console.log(id);
+    console.log("email");
+    console.log(props.user_id);
+    // var id = '5d8e9102bfb9b671d5868a5e';
+    // console.log(id);
     // defines "this"
     // this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangefirst_name = this.onChangefirst_name.bind(this);
@@ -21,8 +24,8 @@ export default class CreateContact extends Component {
     this.onChangenickname = this.onChangenickname.bind(this);
     this.onChangebirthday = this.onChangebirthday.bind(this);
     this.onChangecreateDate = this.onChangecreateDate.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
 
+    this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       // here is where we are stuck, to get the objectID of the user to add to here
@@ -35,7 +38,7 @@ export default class CreateContact extends Component {
       birthday: '',
       createDate: new Date(),
       // might not need
-      users: []
+      // users: []
     };
   }
 
@@ -121,9 +124,20 @@ export default class CreateContact extends Component {
     axios.post('/api/contacts/add', contact)
       .then(res => console.log(res.data));
 
+
+      
     // goes back to contact list
     window.location = '/dashboard';
   }
+
+  // deleteContact(id) {
+  //   axios.delete('/api/contacts/'+id)
+  //     .then(res => console.log(res.data));
+  //   // this.setState({
+  //   //   // returns all the id's that don't match the deleted id
+  //   //   contacts: this.state.contacts.filter(el => el._id !== id)
+  //   // })
+  // }
 
 
   render() {
@@ -224,13 +238,19 @@ export default class CreateContact extends Component {
 
           <div className="form-group">
             <input type="submit" value="Create Contact" className="btn btn-primary" />
+            
           </div>
         </form>
+        {/* <a href="#" onClick={() => { this.deleteContact(this.contact._id) }}>Delete</a>  */}
       </div>
       </div>
     )
   }
 }
-const mapStateToProps = state => ({
-  auth: state.auth
-});
+
+function mapStateToProps(state) {
+  const userData = state.sessionReducer.userData;
+console.log((state));
+
+  return { userData };
+}

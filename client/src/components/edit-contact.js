@@ -56,6 +56,8 @@ export default class EditContact extends Component {
         // returns all the id's that don't match the deleted id
         // contacts: this.state.contacts.filter(el => el._id !== id)
       // })
+      window.location = '/dashboard';
+
     }
 
     onChangefirst_name(e) {
@@ -116,9 +118,13 @@ export default class EditContact extends Component {
   render() {
     return (
       // Form formatting
+      
       <div style={{display: "flex", color:"white"}}>
       <div style={{margin: "auto", width: 400}}>
+      {/* <div><a href="/dashboard" className="material-icons">code</i></div> */}
+
         <h3>Edit Contact</h3>
+        <a href="#" onClick={() => { this.deleteContact(this.props.match.params.id) }} class="btn pink darken-2">Delete</a>
         <form onSubmit={this.onSubmit}>
             <div className="form-group"> 
               <label>First Name: </label>
@@ -186,6 +192,9 @@ export default class EditContact extends Component {
   </button>
   
         </form>
+
+
+        {/* <a href="#" >Delete</a>  */}
       </div>
       </div>
     )
