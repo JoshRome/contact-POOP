@@ -11,8 +11,7 @@ import { logoutUser } from "../actions/authActions";
 export default class CreateContact extends Component {
   constructor(props) {
     super(props);
-    console.log("email");
-    console.log(props.user_id);
+    //const{id} = this.props.location.state;
     // var id = '5d8e9102bfb9b671d5868a5e';
     // console.log(id);
     // defines "this"
@@ -29,7 +28,7 @@ export default class CreateContact extends Component {
 
     this.state = {
       // here is where we are stuck, to get the objectID of the user to add to here
-      owner: "5d8e9102bfb9b671d5868a5e",
+      owner: '',
       first_name: '',
       last_name: '',
       phone: '',
@@ -42,7 +41,7 @@ export default class CreateContact extends Component {
     };
   }
 
-  
+
   // FIXME: change drop down box design, dont want to be able
   // to switch between users.
   // automatically called before anything loaded on page
@@ -108,8 +107,10 @@ export default class CreateContact extends Component {
   onSubmit(e) {
     e.preventDefault();
 
+    const{id} = this.props.location.state;
+    console.log("this is the owner key = " + id);
     const contact = {
-      //owner: this.props.auth.id,
+      owner: id,
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       phone: this.state.phone,
@@ -125,7 +126,7 @@ export default class CreateContact extends Component {
       .then(res => console.log(res.data));
 
 
-      
+
     // goes back to contact list
     window.location = '/dashboard';
   }
@@ -141,7 +142,7 @@ export default class CreateContact extends Component {
 
 
   render() {
-    
+
     return (
       // Form formatting
       <div style={{display: "flex", color:"white"}}>
@@ -238,7 +239,7 @@ export default class CreateContact extends Component {
 
           <div className="form-group">
             <input type="submit" value="Create Contact" className="btn btn-primary" />
-            
+
           </div>
         </form>
         {/* <a href="#" onClick={() => { this.deleteContact(this.contact._id) }}>Delete</a>  */}

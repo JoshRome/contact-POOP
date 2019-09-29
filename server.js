@@ -10,6 +10,7 @@ const contact = require("./routes/api/contacts")
 
 const app = express();
 
+
 if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('client/build'));
@@ -49,5 +50,3 @@ const port = process.env.PORT || 5000;
 app.listen(port, function() {
     console.log("Server is up and running on Port: " + port);
 });
-
-

@@ -12,7 +12,7 @@ router.route('/dashboard').post((req, res) => {
 
 // creates new contact
 router.route('/add').post((req, res) => {
-  const owner = req.body.id;
+  const owner = req.body.owner;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const phone = Number(req.body.phone) || null;

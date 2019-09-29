@@ -18,7 +18,7 @@ const Contacts = props => (
     <td>{props.contacts.createDate.substring(0,10)}</td>
     <td>
       {/* TODO: make button instead of link */}
-      {/* {/* <Link to={"/edit/"+props.contact._id}>edit</Link> |  */} 
+      {/* {/* <Link to={"/edit/"+props.contact._id}>edit</Link> |  */}
       <Link to={"edit/"+props.contacts._id}> Edit</Link>
     </td>
   </tr>
@@ -44,10 +44,14 @@ class Dashboard extends Component {
 
   componentDidMount() {
     const {email} = this.props.auth;
+    console.log(email);
     const {user} = this.props.auth;
     // const email = 'help@help.zzz';
-    // console.log(user);
-        axios.post('/api/contacts/dashboard/', email)
+     console.log(user);
+
+     const id = user.id;
+     console.log(id);
+        axios.post('/api/contacts/dashboard/',user)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
             this.setState({ contacts: response.data });
@@ -117,7 +121,7 @@ return (
             <div class="row">
             <div className="col s3 center-align">
 
-<a href="/create" class="waves-effect waves-light btn">create</a></div>
+<Link to={{ pathname: "/create", state: { id: user.id} }} class="waves-effect waves-light btn">create</Link></div>
 <div className="col s3 center-align">
 
 <a  onClick={this.onLogoutClick} class="waves-effect waves-light btn">logout</a></div>
@@ -130,7 +134,7 @@ return (
   {/* </div> */}
 </div>
 
-{/* 
+{/*
             <button
               style={{
                 width: "150px",
