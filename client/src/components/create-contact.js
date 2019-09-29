@@ -1,11 +1,11 @@
 
 import React, { Component } from "react";
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../actions/authActions";
+// import PropTypes from "prop-types";
+// import { connect } from "react-redux";
+// import { logoutUser } from "../actions/authActions";
 
 
 export default class CreateContact extends Component {
@@ -249,9 +249,9 @@ export default class CreateContact extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const userData = state.sessionReducer.userData;
-console.log((state));
+// function mapStateToProps(state) {
+//   const userData = state.sessionReducer.userData;
+// console.log((state));
 
   return { userData };
 }
