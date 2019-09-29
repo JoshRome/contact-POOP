@@ -19,6 +19,7 @@ const Contacts = props => (
     <td>
       {/* TODO: make button instead of link */}
       {/* <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a> */}
+      <Link to={"edit/"+props.contacts._id}>Edit</Link>
     </td>
   </tr>
 )
@@ -32,7 +33,7 @@ class Dashboard extends Component {
     constructor(props) {
     super(props);
 
-    // this.deleteContact = this.deleteContact.bind(this);
+    this.deleteContact = this.deleteContact.bind(this);
     this.state = {contacts: []};
     // const email = this.state.owner;
 
@@ -42,9 +43,9 @@ class Dashboard extends Component {
 
   componentDidMount() {
     // const {email} = this.props.auth;
-    const {user } = this.props.auth;
-    const email = 'help@help.zzz';
-    console.log(user);
+    const {user} = this.props.auth;
+    // const email = 'help@help.zzz';
+    // console.log(user);
         axios.post('/api/contacts/dashboard/', user)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
@@ -58,14 +59,14 @@ class Dashboard extends Component {
       // axios.post('http://localhost:5000/', user)
       // .then(res => console.log(res.data));
 
-      // deleteContact(id) {
-      //   axios.delete('http://localhost:5000/api/contacts/dashboard'+id)
-      //     .then(res => console.log(res.data));
-      //   this.setState({
-      //     // returns all the id's that don't match the deleted id
-      //     contacts: this.state.contacts.filter(el => el._id !== id)
-      //   })
-      // }
+      deleteContact(id) {
+        axios.delete('/api/contacts/dashboard'+id)
+          .then(res => console.log(res.data));
+        this.setState({
+          // returns all the id's that don't match the deleted id
+          contacts: this.state.contacts.filter(el => el._id !== id)
+        })
+      }
 
       // contactList() {
       //   return this.state.contacts.map(currentcontact => {
@@ -85,7 +86,7 @@ class Dashboard extends Component {
 
 render() {
     const { user } = this.props.auth;
-    console.log(user);
+    // console.log(user);
 return (
       <div>
         {/* <div className="row">
@@ -94,7 +95,7 @@ return (
           </div>
         </div> */}
 
-        <div class="column side">
+        <div className="column side">
         <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
@@ -104,7 +105,7 @@ return (
             </h4>
 
 
-            <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+            <a href="/create" className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
             <button
               style={{
                 width: "150px",
@@ -140,8 +141,8 @@ return (
     </div>
   </div> */}
 
-      <div class="column middle">
-        <table class="responsive-table">
+      <div className="column middle">
+        <table className="highlight">
         <thead>
           <tr>
               <th>First Name</th>

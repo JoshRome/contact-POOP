@@ -68,7 +68,7 @@ class App extends Component {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/table" component={NewTable} />
-          <Route exact path="/edit" component={EditContact} />
+          <Route exact path="/edit/:id" component={EditContact} />
 
 
           {/* moved to list display to dashboard */}

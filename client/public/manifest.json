@@ -10,12 +10,12 @@
     {
       "src": "logo192.png",
       "type": "image/jpg",
-      "sizes": "192x192"
+      "sizes": "124x124"
     },
     {
       "src": "logo192.png",
       "type": "image/jpg",
-      "sizes": "512x512"
+      "sizes": "124x124"
     }	    
   ],
   "start_url": ".",

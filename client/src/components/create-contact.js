@@ -10,7 +10,8 @@ import { logoutUser } from "../actions/authActions";
 export default class CreateContact extends Component {
   constructor(props) {
     super(props);
-
+    const id = this.props.email;
+    console.log(id);
     // defines "this"
     // this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangefirst_name = this.onChangefirst_name.bind(this);
@@ -25,35 +26,37 @@ export default class CreateContact extends Component {
 
     this.state = {
       // here is where we are stuck, to get the objectID of the user to add to here
-      owner: JSON.parse(this.props.auth),
+      owner: '',
       first_name: '',
       last_name: '',
       phone: '',
       email: '',
       nickname: '',
       birthday: '',
-      createDate: new Date()
+      createDate: new Date(),
       // might not need
-      // users: []
+      users: []
     };
   }
 
+  
   // FIXME: change drop down box design, dont want to be able
   // to switch between users.
   // automatically called before anything loaded on page
   // componentDidMount() {
-  //   axios.get('htto://localhost:5000/users/')
+  //   axios.get('htto://localhost:5000/login/')
   //     .then(response => {
-  //       // if at least one user in database
-  //       if (response.data.length > 0) {
-  //         this.setState({
-  //           // returns username from cell,
-  //           // TODO: this is prob how to get contacts list to work
-  //           users: response.data.map(user => user.username),
-  //           // username defaults to first user in database
-  //           username: response.data[0].username
-  //         })
-  //       }
+  //       console.log(response)
+  //       // // if at least one user in database
+  //       // if (response.data.length > 0) {
+  //       //   this.setState({
+  //       //     // returns username from cell,
+  //       //     // TODO: this is prob how to get contacts list to work
+  //       //     users: response.data.map(user => user.username),
+  //       //     // username defaults to first user in database
+  //       //     username: response.data[0].username,
+  //         // })
+  //       // }
   //     })
   // }
 
@@ -124,6 +127,7 @@ export default class CreateContact extends Component {
 
 
   render() {
+    
     return (
       // Form formatting
       <div>
@@ -200,7 +204,7 @@ export default class CreateContact extends Component {
             <div className="form-group">
               <label>Birthday: </label>
               <input
-                  type="text"
+                  type="date"
                   className="form-control"
                   value={this.state.birthday}
                   onChange={this.onChangebirthday}
@@ -225,3 +229,6 @@ export default class CreateContact extends Component {
     )
   }
 }
+const mapStateToProps = state => ({
+  auth: state.auth
+});

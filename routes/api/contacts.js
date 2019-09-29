@@ -64,10 +64,8 @@ router.route('/:id').delete((req, res) => {
 router.route('/update/:id').post((req, res) => {
   contact.findById(req.params.id)
     .then(contact => {
-      contact.owner = req.body.owner;
       contact.first_name = req.body.first_name;
       contact.last_name = req.body.last_name;
-      //TODO: assert here?? maybe??
       contact.phone = Number(req.body.phone) || null;
       contact.email = req.body.email;
       contact.nickname = req.body.nickname;
