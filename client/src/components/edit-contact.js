@@ -21,7 +21,7 @@ export default class EditContact extends Component {
         // const { user } = this.props.auth;
 
         this.state = {
-          owner: '',
+          // owner: '',
           first_name: '',
           last_name: '',
           phone: '',
@@ -192,9 +192,6 @@ export default class EditContact extends Component {
   </button>
   
         </form>
-
-
-        {/* <a href="#" >Delete</a>  */}
       </div>
       </div>
     )
