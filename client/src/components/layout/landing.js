@@ -10,7 +10,7 @@ class Landing extends Component {
              Manage your <b>contacts</b> with the{" "}
               <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app
             </h4>
-            <p className="flow-text grey-text text-darken-1">
+            <p className="flow-text white-text text-darken-1">
               A (minimal) contact manager app that stores phone, email, and addresses. Just testing the functionality. Don't sumbit w/ this here
             </p>
             <br />

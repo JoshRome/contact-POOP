@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Paper from '@material-ui/core/Paper';
+import color from '@material-ui/core/colors/lime';
+
 
 export default class EditContact extends Component {
 
@@ -12,6 +15,8 @@ export default class EditContact extends Component {
         this.onChangeemail = this.onChangeemail.bind(this);
         this.onChangenickname = this.onChangenickname.bind(this);
         this.onChangebirthday = this.onChangebirthday.bind(this);
+        this.deleteContact = this.deleteContact.bind(this);
+
         this.onSubmit = this.onSubmit.bind(this);
 
         // const { user } = this.props.auth;
@@ -44,6 +49,15 @@ export default class EditContact extends Component {
             })
     }
 
+
+    deleteContact(id) {
+      axios.delete('/api/contacts/'+this.props.match.params.id)
+        .then(res => console.log(res.data));
+      // this.setState({
+        // returns all the id's that don't match the deleted id
+        // contacts: this.state.contacts.filter(el => el._id !== id)
+      // })
+    }
 
     onChangefirst_name(e) {
       this.setState({
@@ -95,14 +109,16 @@ export default class EditContact extends Component {
         axios.post('/api/contacts/update/'+this.props.match.params.id, contact)
             .then(res => console.log(res.data));
         
-        this.props.history.push('/dashboard');
+        // this.props.history.push('/dashboard');
+        window.location = '/dashboard';
+
     }
 
   render() {
     return (
       // Form formatting
-      <div>
-        you are editing a contact!
+      <div style={{display: "flex", color:"white"}}>
+      <div style={{margin: "auto", width: 400}}>
         <h3>Edit Contact</h3>
         <form onSubmit={this.onSubmit}>
             <div className="form-group"> 
@@ -163,10 +179,15 @@ export default class EditContact extends Component {
                   onChange={this.onChangebirthday}
                   />
             </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <input type="submit" value="Edit Contact" className="btn btn-primary" />
-          </div>
+          </div> */}
+          <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+  
         </form>
+      </div>
       </div>
     )
   }

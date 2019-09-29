@@ -10,7 +10,7 @@ import { logoutUser } from "../actions/authActions";
 export default class CreateContact extends Component {
   constructor(props) {
     super(props);
-    const id = this.props.email;
+    var id = '5d8e9102bfb9b671d5868a5e';
     console.log(id);
     // defines "this"
     // this.onChangeUsername = this.onChangeUsername.bind(this);
@@ -26,7 +26,7 @@ export default class CreateContact extends Component {
 
     this.state = {
       // here is where we are stuck, to get the objectID of the user to add to here
-      owner: '',
+      owner: "5d8e9102bfb9b671d5868a5e",
       first_name: '',
       last_name: '',
       phone: '',
@@ -130,7 +130,8 @@ export default class CreateContact extends Component {
     
     return (
       // Form formatting
-      <div>
+      <div style={{display: "flex", color:"white"}}>
+        <div style={{margin: "auto", width: 400}}>
         <h3>Create New Contact</h3>
         <form onSubmit={this.onSubmit}>
           {/* <div className="form-group">
@@ -225,6 +226,7 @@ export default class CreateContact extends Component {
             <input type="submit" value="Create Contact" className="btn btn-primary" />
           </div>
         </form>
+      </div>
       </div>
     )
   }

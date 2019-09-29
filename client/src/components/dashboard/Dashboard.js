@@ -18,8 +18,9 @@ const Contacts = props => (
     <td>{props.contacts.createDate.substring(0,10)}</td>
     <td>
       {/* TODO: make button instead of link */}
-      {/* <Link to={"/edit/"+props.contact._id}>edit</Link> | <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>delete</a> */}
-      <Link to={"edit/"+props.contacts._id}>Edit</Link>
+      {/* {/* <Link to={"/edit/"+props.contact._id}>edit</Link> |  */}
+    <a href="#" onClick={() => { props.deleteContact(props.contact._id) }}>Delete</a> | 
+      <Link to={"edit/"+props.contacts._id}> Edit</Link>
     </td>
   </tr>
 )
@@ -28,6 +29,7 @@ class Dashboard extends Component {
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
+
   };
 
     constructor(props) {
@@ -42,11 +44,11 @@ class Dashboard extends Component {
   // state = {contacts: []}
 
   componentDidMount() {
-    // const {email} = this.props.auth;
+    const {email} = this.props.auth;
     const {user} = this.props.auth;
     // const email = 'help@help.zzz';
     // console.log(user);
-        axios.post('/api/contacts/dashboard/', user)
+        axios.post('/api/contacts/dashboard/', email)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
             this.setState({ contacts: response.data });
@@ -60,7 +62,7 @@ class Dashboard extends Component {
       // .then(res => console.log(res.data));
 
       deleteContact(id) {
-        axios.delete('/api/contacts/dashboard'+id)
+        axios.delete('/api/contacts/'+id)
           .then(res => console.log(res.data));
         this.setState({
           // returns all the id's that don't match the deleted id
@@ -95,7 +97,7 @@ return (
           </div>
         </div> */}
 
-        <div className="column side">
+        <div className="column middle">
         <h4>
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
@@ -103,9 +105,33 @@ return (
                 <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app 👏
               </p>
             </h4>
+            <div style={{display: "flex", color:"white"}}>
+            <div style={{margin: "auto", width: 600}}>
+              <input
+                value={this.state.value}
+                onChange={e => this.onChangeHandler(e)}
+                placeholder="search contacts"
+              />
+              {this.renderContacts}
+            </div>
+            </div>
+            <div class="row">
+            <div className="col s3 center-align">
 
+<a href="/create" class="waves-effect waves-light btn">create</a></div>
+<div className="col s3 center-align">
 
-            <a href="/create" className="btn-floating halfway-fab waves-effect waves-light red"><i className="material-icons">add</i></a>
+<a  onClick={this.onLogoutClick} class="waves-effect waves-light btn">logout</a></div>
+
+{/* <div class="search-container">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form> */}
+  {/* </div> */}
+</div>
+
+{/* 
             <button
               style={{
                 width: "150px",
@@ -117,7 +143,7 @@ return (
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Logout
-            </button>
+            </button> */}
   </div>
       {/* formatting stuff: testing card layout, look at if time */}
         {/* <div class="row">
@@ -140,7 +166,8 @@ return (
       </div>
     </div>
   </div> */}
-
+  <div style={{display: "flex", color:"white"}}>
+<div style={{margin: "auto", width: 800}}>
       <div className="column middle">
         <table className="highlight">
         <thead>
@@ -160,6 +187,8 @@ return (
          { this.ContactList() }
         </tbody>
       </table>
+        </div>
+        </div>
         </div>
       </div>
     );
