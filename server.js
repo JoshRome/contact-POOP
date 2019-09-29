@@ -8,9 +8,19 @@ const uri = require("./config/keys").mongoURI;
 const users = require("./routes/api/users");
 const contact = require("./routes/api/contacts")
 
-
 const app = express();
 
+const csp = require('express-csp-header');
+app.use(csp({
+  policies: {
+    'default-src': [csp.SELF],
+    'script-src': [csp.SELF, csp.INLINE, 'somehost.com'],
+    'style-src': [csp.SELF, 'mystyles.net'],
+    'img-src': ['data:', 'images.com'],
+    'worker-src': [csp.NONE],
+    'block-all-mixed-content': true
+  }
+}));
 if (process.env.NODE_ENV === 'production') {
   //set static folder
   app.use(express.static('client/build'));
