@@ -12,14 +12,14 @@ router.route('/dashboard').post((req, res) => {
 
 // creates new contact
 router.route('/add').post((req, res) => {
-  const owner = req.body.owner;
+  const owner = req.body.id;
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const phone = Number(req.body.phone) || null;
   const email = req.body.email;
   const nickname = req.body.nickname;
   const birthday = req.body.birthday;
-  const createDate = Date.parse(req.body.createDate);
+  const createDate = req.body.createDate;
 
 
 

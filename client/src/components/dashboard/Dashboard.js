@@ -45,8 +45,6 @@ class Dashboard extends Component {
     const {user } = this.props.auth;
     const email = 'help@help.zzz';
     console.log(user);
-
-    const owner = { owner : email }
         axios.post('/api/contacts/dashboard/', user)
           .then(response => {
             // captures all data, FIXME: dont list empty fields?
@@ -101,10 +99,10 @@ return (
               <b>Hey there,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
                 You are logged into your{" "}
-                <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app 👏 
+                <span style={{ fontFamily: "monospace" }}>Contact Manager</span> app 👏
               </p>
             </h4>
-            
+
 
             <a href="/create" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
             <button

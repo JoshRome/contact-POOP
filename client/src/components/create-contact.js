@@ -1,6 +1,11 @@
 
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions/authActions";
 
 export default class CreateContact extends Component {
   constructor(props) {
@@ -19,7 +24,8 @@ export default class CreateContact extends Component {
 
 
     this.state = {
-      owner: '',
+      // here is where we are stuck, to get the objectID of the user to add to here
+      owner: JSON.parse(this.props.auth),
       first_name: '',
       last_name: '',
       phone: '',
@@ -41,7 +47,7 @@ export default class CreateContact extends Component {
   //       // if at least one user in database
   //       if (response.data.length > 0) {
   //         this.setState({
-  //           // returns username from cell, 
+  //           // returns username from cell,
   //           // TODO: this is prob how to get contacts list to work
   //           users: response.data.map(user => user.username),
   //           // username defaults to first user in database
@@ -95,9 +101,9 @@ export default class CreateContact extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    
+
     const contact = {
-      owner: 'help@help.zzz',
+      //owner: this.props.auth.id,
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       phone: this.state.phone,
@@ -123,7 +129,7 @@ export default class CreateContact extends Component {
       <div>
         <h3>Create New Contact</h3>
         <form onSubmit={this.onSubmit}>
-          {/* <div className="form-group"> 
+          {/* <div className="form-group">
             <label>Username: </label>
             <select ref="userInput"
                 required
@@ -131,10 +137,10 @@ export default class CreateContact extends Component {
                 value={this.state.username}
                 onChange={this.onChangeUsername}>
                 {
-                  // array of all users from database, map 
+                  // array of all users from database, map
                   // returns something for each element of the array
                   this.state.users.map(function(user) {
-                    return <option 
+                    return <option
                       key={user}
                       value={user}>{user}
                       </option>;
@@ -142,7 +148,7 @@ export default class CreateContact extends Component {
                 }
             </select>
             </div> */}
-            <div className="form-group"> 
+            <div className="form-group">
               <label>First Name: </label>
               <input  type="text"
                   required
@@ -153,8 +159,8 @@ export default class CreateContact extends Component {
             </div>
             <div className="form-group">
               <label>Last Name: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.last_name}
                   onChange={this.onChangelast_name}
@@ -163,8 +169,8 @@ export default class CreateContact extends Component {
 
             <div className="form-group">
               <label>Phone Number: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.phone}
                   onChange={this.onChangephone}
@@ -173,8 +179,8 @@ export default class CreateContact extends Component {
 
             <div className="form-group">
               <label>Email Address: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.email}
                   onChange={this.onChangeemail}
@@ -183,8 +189,8 @@ export default class CreateContact extends Component {
 
             <div className="form-group">
               <label>Nickname: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.nickname}
                   onChange={this.onChangenickname}
@@ -193,8 +199,8 @@ export default class CreateContact extends Component {
 
             <div className="form-group">
               <label>Birthday: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.birthday}
                   onChange={this.onChangebirthday}
@@ -203,8 +209,8 @@ export default class CreateContact extends Component {
 
             <div className="form-group">
               <label>Date Created: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.createDate}
                   onChange={this.onChangecreateDate}
