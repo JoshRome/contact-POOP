@@ -24,7 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "most-okay-contact-manager.herokuapp.com",
+  "proxy": "https://most-okay-contact-manager.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
