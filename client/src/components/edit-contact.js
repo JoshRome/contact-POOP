@@ -50,8 +50,8 @@ export default class EditContact extends Component {
 
     deleteContact(id) {
 
-      if(confirm("Are you sure you want to delete this contact?"))
-      {
+      // if(confirm("Are you sure you want to delete this contact?"))
+      // {
         axios.delete('/api/contacts/'+this.props.match.params.id)
         .then(res => console.log(res.data));
         // this.setState({
@@ -59,7 +59,7 @@ export default class EditContact extends Component {
           // contacts: this.state.contacts.filter(el => el._id !== id)
         // })
       window.location = '/dashboard';
-      }
+      // }
     }
 
     onChangefirst_name(e) {
