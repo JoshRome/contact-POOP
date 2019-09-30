@@ -170,7 +170,7 @@ export default class CreateContact extends Component {
             </div> */}
             <div className="form-group">
               <label>First Name: </label>
-              <input  type="text"
+              <input  type="text" 
                   required
                   className="form-control"
                   value={this.state.first_name}
