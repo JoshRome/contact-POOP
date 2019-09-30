@@ -37,7 +37,7 @@ class Dashboard extends Component {
     // this.deleteContact = this.deleteContact.bind(this);
     this.state = {
       contacts: [],
-      search: 'search'
+      search: ''
     };
     // const email = this.state.owner;
 
@@ -89,15 +89,21 @@ class Dashboard extends Component {
             return <Contacts contacts={currentContact} key={i} />;
         })
     }
+    
 
     updateSearch(event) {
-      this.setState({search: event.target.value})
+      this.setState({search: event.target.value.substring(0,30)});
     }
 
 
 
 render() {
     const { user } = this.props.auth;
+    let filteredContacts = this.state.contacts.filter(
+      (contacts) => {
+        return contacts.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      }
+    );
     // console.log(user);
 return (
       <div>
@@ -192,7 +198,11 @@ return (
 
         <tbody>
         {/* table should generate here, but contacts not added to db so can't test */}
-         { this.ContactList() }
+         {/* { this.ContactList() } */}
+
+           {filteredContacts.map(function(currentContact, i){
+            return <Contacts contacts={currentContact} key={i} />
+         })}
         </tbody>
       </table>
         </div>
