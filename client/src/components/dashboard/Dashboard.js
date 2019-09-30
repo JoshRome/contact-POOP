@@ -84,11 +84,11 @@ class Dashboard extends Component {
       //   })
       // }
 
-      ContactList() {
-        return this.state.contacts.map(function(currentContact, i){
-            return <Contacts contacts={currentContact} key={i} />;
-        })
-    }
+    //   ContactList() {
+    //     return this.state.contacts.map(function(currentContact, i){
+    //         return <Contacts contacts={currentContact} key={i} />;
+    //     })
+    // }
     
 
     updateSearch(event) {
@@ -101,7 +101,7 @@ render() {
     const { user } = this.props.auth;
     let filteredContacts = this.state.contacts.filter(
       (contacts) => {
-        return contacts.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+        return (contacts.first_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || contacts.last_name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || contacts.email.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 || contacts.nickname.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1);
       }
     );
     // console.log(user);
