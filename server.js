@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require("passport");
+const path = require('path');
 
 // link to the database String
 const uri = require("./config/keys").mongoURI;
