@@ -62,7 +62,7 @@ router.route('/:id').delete((req, res) => {
 
 // updates contact
 router.route('/update/:id').put((req, res) => {
-  contact.findByIdAndUpdate(req.params.id)
+  contact.findById(req.params.id)
     .then(contact => {
       contact.first_name = req.body.first_name;
       contact.last_name = req.body.last_name;

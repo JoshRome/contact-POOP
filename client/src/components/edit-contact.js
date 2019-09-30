@@ -106,7 +106,7 @@ export default class EditContact extends Component {
             birthday: this.state.birthday
         };
         console.log(contact);
-        axios.put('/api/contacts/update/'+this.props.match.params.id)
+        axios.put('/api/contacts/update/'+this.props.match.params.id, contact)
             .then(res => console.log(res.data));
 
         // this.props.history.push('/dashboard');
