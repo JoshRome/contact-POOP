@@ -21,7 +21,6 @@ export default class EditContact extends Component {
         // const { user } = this.props.auth;
 
         this.state = {
-          // owner: '',
           first_name: '',
           last_name: '',
           phone: '',
@@ -41,7 +40,7 @@ export default class EditContact extends Component {
                   email: response.data.email,
                   nickname: response.data.nickname,
                   birthday: response.data.birthday
-                })   
+                })
             })
             .catch(function (error) {
                 console.log(error);
@@ -98,7 +97,7 @@ export default class EditContact extends Component {
         birthday: e.target.value
       });
     }
-    
+
     onSubmit(e) {
         e.preventDefault();
         const contact = {
@@ -112,7 +111,7 @@ export default class EditContact extends Component {
         console.log(contact);
         axios.post('/api/contacts/update/'+this.props.match.params.id, contact)
             .then(res => console.log(res.data));
-        
+
         // this.props.history.push('/dashboard');
         window.location = '/dashboard';
 
@@ -121,7 +120,7 @@ export default class EditContact extends Component {
   render() {
     return (
       // Form formatting
-      
+
       <div style={{display: "flex", color:"white"}}>
       <div style={{margin: "auto", width: 400}}>
       {/* <div><a href="/dashboard" className="material-icons">code</i></div> */}
@@ -129,7 +128,7 @@ export default class EditContact extends Component {
         <h3>Edit Contact</h3>
         <a href="#" onClick={() => { this.deleteContact(this.props.match.params.id) }} class="btn pink darken-2">Delete</a>
         <form onSubmit={this.onSubmit}>
-            <div className="form-group"> 
+            <div className="form-group">
               <label>First Name: </label>
               <input  type="text"
                   required
@@ -140,8 +139,8 @@ export default class EditContact extends Component {
             </div>
             <div className="form-group">
               <label>Last Name: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.last_name}
                   onChange={this.onChangelast_name}
@@ -150,8 +149,8 @@ export default class EditContact extends Component {
 
             <div className="form-group">
               <label>Phone Number: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.phone}
                   onChange={this.onChangephone}
@@ -160,8 +159,8 @@ export default class EditContact extends Component {
 
             <div className="form-group">
               <label>Email Address: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.email}
                   onChange={this.onChangeemail}
@@ -170,8 +169,8 @@ export default class EditContact extends Component {
 
             <div className="form-group">
               <label>Nickname: </label>
-              <input 
-                  type="text" 
+              <input
+                  type="text"
                   className="form-control"
                   value={this.state.nickname}
                   onChange={this.onChangenickname}
@@ -180,8 +179,8 @@ export default class EditContact extends Component {
 
             <div className="form-group">
               <label>Birthday: </label>
-              <input 
-                  type="date" 
+              <input
+                  type="date"
                   className="form-control"
                   value={this.state.birthday}
                   onChange={this.onChangebirthday}
@@ -193,7 +192,7 @@ export default class EditContact extends Component {
           <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
-  
+
         </form>
       </div>
       </div>
