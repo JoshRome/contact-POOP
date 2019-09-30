@@ -124,6 +124,7 @@ return (
             <div style={{display: "flex", color:"white"}}>
             <div style={{margin: "auto", width: 600}}>
               <input type="text" 
+              placeholder="Search"
                 value={this.state.search}
                 onChange={this.updateSearch.bind(this)}/>
               {/* {this.renderContacts} */}
