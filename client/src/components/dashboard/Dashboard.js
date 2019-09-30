@@ -35,7 +35,10 @@ class Dashboard extends Component {
     super(props);
 
     // this.deleteContact = this.deleteContact.bind(this);
-    this.state = {contacts: []};
+    this.state = {
+      contacts: [],
+      search: 'search'
+    };
     // const email = this.state.owner;
 
   }
@@ -87,6 +90,10 @@ class Dashboard extends Component {
         })
     }
 
+    updateSearch(event) {
+      this.setState({search: event.target.value})
+    }
+
 
 
 render() {
@@ -110,12 +117,10 @@ return (
             </h4>
             <div style={{display: "flex", color:"white"}}>
             <div style={{margin: "auto", width: 600}}>
-              <input
-                value={this.state.value}
-                onChange={e => this.onChangeHandler(e)}
-                placeholder="search contacts"
-              />
-              {this.renderContacts}
+              <input type="text" 
+                value={this.state.search}
+                onChange={this.updateSearch.bind(this)}/>
+              {/* {this.renderContacts} */}
             </div>
             </div>
             <div class="row">
