@@ -61,15 +61,17 @@ body {
 h4 {
   color: white
 }
-
+input{
+  color: rgb(255, 255, 255)!important;
+}
 cont {
-  background-color: #666;
   padding: 30px;
   text-align: center;
   font-size: 35px;
   color: white;
   background-color: white;
 }
+
 tr {
   text-align: left
 }
@@ -78,11 +80,10 @@ tbody{
 }
 
 input, select, textarea{
-    color: white;
-}
-
-textarea:focus, input:focus {
-    color:white
+    color: white !important;
+} 
+ textarea:focus, input:focus {
+    color:white !important;
 }
 
 /* Middle column */
@@ -93,6 +94,16 @@ textarea:focus, input:focus {
   margin-right: auto;
   text-align: center;
   color:white;
+}
+.column.scroll {
+  max-width: 90%;
+  max-height: 60%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color:white;
+  overflow: scroll;
 }
 a { color: inherit; } 
 a:hover 
@@ -115,6 +126,28 @@ a:hover
     width: 100%;
   }
 }
+/* change scroll bar colors */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1f1f1f; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+
 </style>
   </head>
   <body background="space.jpeg">
